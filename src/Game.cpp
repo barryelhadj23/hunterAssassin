@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 void Game::InitGame() {
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -14,8 +15,24 @@ void Game::InitGame() {
     SDL_FreeSurface(player_img);
 }
 
+//Je charge mes image source (pour en faire une animation video
+void Game::loadClips() {
+
+    for (int i = 0; i < 7; ++i) {
+        player.player_left_clips[i].x = i * PLAYER_WIDTH;
+        player.player_left_clips[i].y = PLAYER_HEIGHT;
+        player.player_right_clips[i].x = i * PLAYER_WIDTH;
+        player.player_right_clips[i].y = PLAYER_HEIGHT * 2;
+        player.player_up_clips[i].x = i * PLAYER_WIDTH;
+        player.player_up_clips[i].y = PLAYER_HEIGHT * 3;
+        player.player_down_clips[i].x = i * PLAYER_WIDTH;
+        player.player_down_clips[i].y = 0;
+    }
+}
+
 void Game::runProject() {
     InitGame();
+    loadClips();
     while (true) {
         EventAction();
         moveNow();
@@ -77,9 +94,25 @@ void Game::EventAction() {
                 break;
         }
     }
+    /*SDL_Event event;
+    const Uint8* state = SDL_GetKeyboardState(NULL);
+
+    player.moving_left = state[SDL_SCANCODE_LEFT] > 0;
+    player.moving_right = state[SDL_SCANCODE_RIGHT] > 0;
+    player.moving_up = state[SDL_SCANCODE_UP] > 0;
+    player.moving_down = state[SDL_SCANCODE_DOWN] > 0;
+
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            SDL_DestroyWindow(window);
+            SDL_Quit();
+            exit(0);
+        }
+    }*/
 }
 
 void Game::moveNow() {
+    /*
     if (player.moving_left) {
          source.x = 0;
          source.y = PLAYER_HEIGHT;
@@ -102,11 +135,37 @@ void Game::moveNow() {
          source.x = 0;
          source.y = 0;
          dest.y += 10;
+    }*/
+
+    int animation_speed = SDL_GetTicks() / 175;
+    int idx = animation_speed % 4;
+    float vitesse=2.4;
+
+    if (player.moving_left) {
+        player.source.x =  player.player_left_clips[idx].x;
+        player.source.y =  player.player_left_clips[idx].y;
+        player.dest.x -= vitesse;
+    }
+    if (player.moving_right) {
+        player.source.x =  player.player_right_clips[idx].x;
+        player.source.y =  player.player_right_clips[idx].y;
+        player.dest.x += vitesse;
+    }
+    if (player.moving_up) {
+        player.source.x = player.player_up_clips[idx].x;
+        player.source.y = player.player_up_clips[idx].y;
+        player.dest.y -= vitesse;
+    }
+    if (player.moving_down) {
+        player.source.x = player.player_down_clips[idx].x;
+        player.source.y = player.player_down_clips[idx].y;
+        player.dest.y += vitesse;
     }
 }
 
 Game::~Game() {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(texPlayer);
     SDL_Quit();
 }
