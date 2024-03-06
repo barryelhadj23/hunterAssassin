@@ -5,6 +5,8 @@
 #include "Player.h"
 #include "SDL.h"
 #include "config_Variable.h"
+#include "Point.h"
+
 class Game {
 public:
     SDL_Window* window;
@@ -12,6 +14,7 @@ public:
     SDL_Texture* texPlayer;
     SDL_Rect source, dest;
     SDL_Event event;
+
     Player player;
 
     void InitGame();
@@ -19,6 +22,7 @@ public:
     void runProject();
     void EventAction();
     void moveNow();
+    void loadClips();
     ~Game();
 };
 

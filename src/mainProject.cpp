@@ -1,7 +1,7 @@
 #include "Game.h"
 
 int main(int argc, char* args[]) {
-    Game g;
-    g.runProject();
+    Game game;
+    game.runProject();
     return 0;
 }

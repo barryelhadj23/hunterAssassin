@@ -17,11 +17,15 @@ add_executable(hunterassassin src/mainProject.cpp
         src/Player.h
         src/Rect.h
         src/Game.cpp
-        src/Game.h)
+        src/Game.h
+        src/Point.h
+)
 
 add_executable(NoyauTest src/main.cpp
                          src/Player.cpp
                          src/Player.h)
+
+add_executable(Animation src/mainAnimation.cpp)
 
 set_target_properties(NoyauTest PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${NOYAUTEST_OUTPUT_PATH}
@@ -31,4 +35,9 @@ set_target_properties(hunterassassin PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
 )
 
+set_target_properties(Animation PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
+)
+
 target_link_libraries(hunterassassin ${SDL2_LIBRARY})
+target_link_libraries(Animation ${SDL2_LIBRARY})
