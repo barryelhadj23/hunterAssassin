@@ -1,11 +1,9 @@
 #include <iostream>
 #include <SDL.h>
+#include "config_Variable.h"
+#include "../map/map.h"
 
 #define WINDOW_TITLE "Animation Hunter Assassin"
-#define WINDOW_X SDL_WINDOWPOS_UNDEFINED
-#define WINDOW_Y SDL_WINDOWPOS_UNDEFINED
-#define WINDOW_W 600
-#define WINDOW_H 500
 
 #define PLAYER_WIDTH 25
 #define PLAYER_HEIGHT 36
@@ -116,12 +114,14 @@ int main(int argc, char* args[]) {
     SDL_FreeSurface(player_img);
 
     loadClips();
+    map mapGame;
+    mapGame.initAllRectangle();
 
     while (true) {
         handleInput();
         updatePlayer();
-
-        SDL_RenderClear( contenu.renderer);
+        SDL_RenderClear(contenu.renderer);
+        mapGame.makeMap(contenu.renderer);
         SDL_RenderCopy( contenu.renderer,  contenu.player.tex, & contenu.player.source, & contenu.player.dest);
         SDL_RenderPresent( contenu.renderer);
     }

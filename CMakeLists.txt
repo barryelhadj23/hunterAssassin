@@ -25,7 +25,11 @@ add_executable(NoyauTest src/main.cpp
                          src/Player.cpp
                          src/Player.h)
 
-add_executable(Animation src/mainAnimation.cpp)
+add_executable(Animation src/mainAnimation.cpp
+        map/map.h
+        map/map.cpp
+        map/color.h
+)
 
 set_target_properties(NoyauTest PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${NOYAUTEST_OUTPUT_PATH}
