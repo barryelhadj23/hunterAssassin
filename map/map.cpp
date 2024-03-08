@@ -19,26 +19,32 @@ void map::drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destinatio
 
 void map::makeMap(SDL_Renderer * renderer) {
     drawMoquette(renderer);
-    for(int i=0; i<10;i++){
+    for(int i=0; i<5;i++){
         drawObstacle(renderer,pathTab[i],recTab[i]);
     }
+    /*drawObstacle(renderer,pathTab[0],recTab[0]);
+    drawObstacle(renderer,pathTab[1],recTab[1]);
+    drawObstacle(renderer,pathTab[2],recTab[2]);
+    /*for(int i=0; i<3;i++){
+        drawObstacle(renderer,pathTab[i],recTab[i]);
+    }*/
 }
 //un probleme de concatenation à resoudre
 void map::initAllRectangle() {
     //porte
-    recTab[0].x = 167;
-    recTab[0].y = 685;
-    recTab[0].w = 63;
-    recTab[0].h = 17;
+    recTab[0].x = 166;
+    recTab[0].y = 680;
+    recTab[0].w = 55;
+    recTab[0].h = 25;
     //mur gauche
     recTab[1].x = 0;
     recTab[1].y = 670;
-    recTab[1].w = 170;
+    recTab[1].w = 165;
     recTab[1].h = 40;
     //mur droit
-    recTab[2].x = 225;
+    recTab[2].x = 222;
     recTab[2].y = 670;
-    recTab[2].w = 175;
+    recTab[2].w = 180;
     recTab[2].h = 40;
 
     pathTab[0] = "../data/porte.bmp";
@@ -49,15 +55,16 @@ void map::initAllRectangle() {
     //texture bas
     recTab[3].x = 0;
     recTab[3].y = 330;
-    recTab[3].w = 200;
+    recTab[3].w = 400;
     recTab[3].h = 175;
 
     recTab[4].x = 0;
     recTab[4].y = 490;
-    recTab[4].w = 200;
-    recTab[4].h = 175;
+    recTab[4].w = 400;
+    recTab[4].h = 180;
 
-
+    /*pathTab[3]= "../data/textureBlanc.bmp";
+    pathTab[4]= "../data/textureBlanc.bmp";*/
     for(int i=3; i<=4; i++){
         pathTab[i]= "../data/textureBlanc.bmp";
     }
