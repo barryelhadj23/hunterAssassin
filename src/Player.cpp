@@ -9,10 +9,10 @@ Player::Player() :health(100){
 }
 
 Player::~Player() {
- health=0;
- source={0,0,0,0};
- dest={0,0,0,0};
- spriteIMG="";
+    health=0;
+    source={0,0,0,0};
+    dest={0,0,0,0};
+    spriteIMG="";
 }
 
 void Player::testRegression() {
@@ -32,6 +32,5 @@ void Player::testRegression() {
 
     std::cout<<"Teste de regression Nickel ;)";
 }
-
 
 
