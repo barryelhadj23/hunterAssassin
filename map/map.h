@@ -12,8 +12,8 @@
 
 class map {
 public:
-    SDL_Rect recTab[10];
-    char * pathTab[10];
+    SDL_Rect recTab[20];
+    char * pathTab[20];
     char * defaultDirectory = "../data/";
     void initAllRectangle();
     void drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destination);
