@@ -7,8 +7,8 @@
 
 
 
-class point {
-
+struct Position {
+    int x, y;
 };
 
 
