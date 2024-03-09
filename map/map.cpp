@@ -20,7 +20,7 @@ void map::drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destinatio
 void map::makeMap(SDL_Renderer * renderer) {
     //drawMoquette(renderer);
     for(int i=0; i<=17;i++){
-        drawObstacle(renderer,pathTab[i],recTab[i]);
+        drawObstacle(renderer,imgPaths[i],recTab[i]);
     }
 }
 //un probleme de concatenation à resoudre
@@ -128,7 +128,7 @@ void map::initAllRectangle() {
         recTab[i].h = recTabH[i];
     }
    //chemin
-    pathTab[0] = "../data/porte.bmp";
+    /*pathTab[0] = "../data/porte.bmp";
     for(int i=1; i<3; i++){
         pathTab[i]= "../data/mur.bmp";
     }
@@ -145,5 +145,21 @@ void map::initAllRectangle() {
     pathTab[11] = "../data/bordureKakiBasDroite.bmp";
     for(int i=12; i<=17; i++){
         pathTab[i]= "../data/blockMilieu.bmp";
+    }*/
+    pathTexture(imgPaths,PORTE,1);
+    pathTexture(imgPaths,"../data/mur.bmp",2);
+    pathTexture(imgPaths,"../data/textureBlanc.bmp",2);
+    pathTexture(imgPaths,"../data/textureKaki.bmp",1);
+    pathTexture(imgPaths,"../data/grosBlockBas.bmp",1);
+    pathTexture(imgPaths,"../data/bordureTextureKaki.bmp",2);
+    pathTexture(imgPaths,"../data/bordureKakiBas.bmp",1);
+    pathTexture(imgPaths,"../data/bordureTextureKaki.bmp",1);
+    pathTexture(imgPaths,"../data/bordureKakiBasDroite.bmp",1);
+    pathTexture(imgPaths,"../data/blockMilieu.bmp",6);
+}
+
+void map::pathTexture(vector<char *> &imgPaths, char *image, int repetition) {
+    for(int i=1; i<=repetition; i++){
+        imgPaths.push_back(image);
     }
 }
