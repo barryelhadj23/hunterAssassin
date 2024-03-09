@@ -23,8 +23,8 @@ bool AI::collision(const SDL_Rect& rect2) {
     if (rect1Right >= rect2Left && rect1Left <= rect2Right && rect1Bottom >= rect2Top && rect1Top <= rect2Bottom)
         return true;
 
-    if (rect1Left <0 || rect1Right >= WINDOW_W-20 || rect1Top <= 20 || rect1Bottom >= WINDOW_H-20)
-        return true; // Il y a collision avec la fenêtre
+    //if (rect1Left <0 || rect1Right >= WINDOW_W-20 || rect1Top <= 20 || rect1Bottom >= WINDOW_H-20)
+        //return true; // Il y a collision avec la fenêtre
 
     return false;
 }
@@ -47,12 +47,24 @@ void AI::moveAgain(int distanceX, int distanceY) {
 }
 
 void AI::contourObstacle(SDL_Rect obstacleRect) {
-    squareRect->x++;
+    // Calcule des deux itinéraires possibles
+    int leftX = obstacleRect.x - squareRect->w; // Bord gauche de l'obstacle
+    int rightX = obstacleRect.x + obstacleRect.w; // Bord droit de l'obstacle
+
+    // Calcule de la distance de chaque itinéraire par rapport à la destination
+    double leftDistance = sqrt(pow(destRect->x - leftX, 2) + pow(destRect->y - squareRect->y, 2));
+    double rightDistance = sqrt(pow(destRect->x - rightX, 2) + pow(destRect->y - squareRect->y, 2));
+
+    // Choisir l'itinéraire le plus court
+    if (leftDistance < rightDistance) {
+        squareRect->x--;
+    } else {
+        squareRect->x++;
+    }
 }
 
-//Simple IA
 void AI::mov(SDL_Rect obstacleRect) {
-    // je Calcule les distances sur les axes x et y
+    // Calcule  des distances sur les axes x et y
     int distanceX = destRect->x - squareRect->x;
     int distanceY = destRect->y - squareRect->y;
 
@@ -60,14 +72,14 @@ void AI::mov(SDL_Rect obstacleRect) {
     if (distanceX != 0 || distanceY != 0) {
         // S'il y a collision, j'essaye de contourner l'obstacle
         if (collision(obstacleRect)) {
-                contourObstacle(obstacleRect);
-        } else{
+            contourObstacle(obstacleRect);
+        } else {
             // Ensuite, je continue le mouvement
             moveAgain(distanceX, distanceY);
         }
-
     }
 }
+
 
 
 

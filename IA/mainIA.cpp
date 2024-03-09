@@ -25,7 +25,8 @@ int main(int argc, char* argv[]) {
     }
 
     SDL_Rect squareRect = {0, (WINDOW_H - SQUARE_SIZE) / 2, SQUARE_SIZE, SQUARE_SIZE};
-    SDL_Rect obstacle1 = {0, 50 , WINDOW_W/2, SQUARE_SIZE};
+    SDL_Rect obstacle1 = {25, 50 , WINDOW_W/2 - 25, SQUARE_SIZE};
+    SDL_Rect obstacle2 = {WINDOW_W/4, WINDOW_H/2 -20 , 25, WINDOW_W/2 - 25};
     SDL_Rect destRect = squareRect;
 
     AI ai(&squareRect, &destRect);
@@ -53,8 +54,13 @@ int main(int argc, char* argv[]) {
 
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderFillRect(renderer, &squareRect);
+
         SDL_SetRenderDrawColor(renderer, 217, 189, 100, 255);
         SDL_RenderFillRect(renderer, &obstacle1);
+
+        SDL_SetRenderDrawColor(renderer, 0, 189, 100, 255);
+        SDL_RenderFillRect(renderer, &obstacle2);
+
         SDL_RenderPresent(renderer);
 
         SDL_Delay(10);
