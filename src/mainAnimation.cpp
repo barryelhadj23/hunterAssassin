@@ -101,17 +101,17 @@ void updatePlayer() {
 
 
 int main(int argc, char* args[]) {
-    SDL_Init(SDL_INIT_VIDEO);
+     SDL_Init(SDL_INIT_VIDEO);
 
      contenu.window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN);
      contenu.renderer = SDL_CreateRenderer( contenu.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
-    SDL_Surface* player_img = SDL_LoadBMP("../data/bardo.bmp");
+     SDL_Surface* player_img = SDL_LoadBMP("../data/bardo.bmp");
 
      contenu.player.tex = SDL_CreateTextureFromSurface( contenu.renderer, player_img);
      contenu.player.source = {0, 0, PLAYER_WIDTH, PLAYER_HEIGHT};
      contenu.player.dest = {100, 100, PLAYER_WIDTH * 2, PLAYER_HEIGHT * 2};
-    SDL_FreeSurface(player_img);
+     SDL_FreeSurface(player_img);
 
     loadClips();
     map mapGame;
