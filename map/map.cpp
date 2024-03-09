@@ -27,7 +27,7 @@ void map::makeMap(SDL_Renderer * renderer) {
 void map::initAllRectangle() {
     //destination
     //porte
-    recTab[0].x = 225;
+    /*recTab[0].x = 225;
     recTab[0].y = 823;
     recTab[0].w = 100;
     recTab[0].h = 33;
@@ -115,8 +115,18 @@ void map::initAllRectangle() {
     recTab[17].x = 415;
     recTab[17].y = 330;
     recTab[17].w = 50;
-    recTab[17].h = 50;
-
+    recTab[17].h = 50;*/
+    const int tailleRecTab = 20;
+    int recTabX[tailleRecTab] = {225, 0, 325, 0, 0, 190, 175, 190, 190, 230, 530, 450, 280, 280, 280, 415, 415, 415};
+    int recTabY[tailleRecTab] = {823, 800, 800, 510, 0, 0, 580, 200, 0, 470, -5, 470, 50, 190, 330, 50, 190, 330};
+    int recTabW[tailleRecTab] = {100, 225, 225, 550, 190, 368, 185, 40, 40, 90, 40, 100, 50, 50, 50, 50, 50, 50};
+    int recTabH[tailleRecTab] = {33, 50, 50, 305, 510, 510, 167, 310, 80, 40, 510, 40, 50, 50, 50, 50, 50, 50};
+    for(int i=0; i<tailleRecTab; i++){
+        recTab[i].x = recTabX[i];
+        recTab[i].y = recTabY[i];
+        recTab[i].w = recTabW[i];
+        recTab[i].h = recTabH[i];
+    }
    //chemin
     pathTab[0] = "../data/porte.bmp";
     for(int i=1; i<3; i++){
