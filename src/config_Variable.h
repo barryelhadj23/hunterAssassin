@@ -6,8 +6,9 @@
 #define WINDOW_TITLE "Hunter Assassin"
 #define WINDOW_X SDL_WINDOWPOS_UNDEFINED
 #define WINDOW_Y SDL_WINDOWPOS_UNDEFINED
-#define WINDOW_W 299
-#define WINDOW_H 500
+
+#define WINDOW_W 550
+#define WINDOW_H 850
 
 #define PLAYER_WIDTH 24
 #define PLAYER_HEIGHT 36
