@@ -1,7 +1,8 @@
 #ifndef HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
 #define HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
 
-#include "SDL.h"
+#include "../src/Rect.h"
+#include "vector"
 #include <iostream>
 #include <cmath>
 #include "../src/config_Variable.h"
@@ -22,7 +23,7 @@ public:
      * @param squareRect Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
      * @param destRect Pointeur vers le rectangle représentant la destination du carré.
      */
-    AI(SDL_Rect* squareRect, SDL_Rect* destRect);
+    AI(Rect* squareRect, Rect* destRect);
 
     /**
      * @brief Vérifie si le carré est arrivé à sa destination.
@@ -32,33 +33,35 @@ public:
 
     /**
      * @brief Gère le mouvement du carré contrôlé par l'IA.
-     * @param obstacleRect Rectangle représentant un obstacle à éviter.
+     * @param obstacles Tableau de tous les Rectangle représentant un obstacle à éviter.
      */
-    void mov(SDL_Rect obstacleRect);
+    void mov(std::vector<Rect>& obstacles);
 
     /**
      * @brief Vérifie s'il y a une collision entre deux rectangles.
      * @param rect2 Rectangle avec lequel vérifier la collision.
      * @return True s'il y a une collision, sinon False.
      */
-    bool collision(const SDL_Rect& rect2);
+    bool collision(const Rect& rect2);
 
     /**
      * @brief Contourne un obstacle en choisissant le chemin le plus court.
      * @param obstacleRect Rectangle représentant l'obstacle à contourner.
      */
-    void contourObstacle(SDL_Rect obstacleRect);
+    void contourObstacle(Rect obstacleRect);
 
     /**
      * @brief Déplace le carré contrôlé par l'IA en fonction des distances spécifiées sur les axes x et y.
      * @param distanceX Distance sur l'axe x.
      * @param distanceY Distance sur l'axe y.
+     * @param obstacle Rectangle représentant l'obstacle à contourner..
      */
-    void moveAgain(int distanceX, int distanceY);
-
+    void moveAgain(int distanceX, int distanceY, Rect obstacle);
+    bool freePixel(std::vector<Rect>& obstacles)
 private:
-    SDL_Rect* squareRect; ///< Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
-    SDL_Rect* destRect; ///< Pointeur vers le rectangle représentant la destination du carré.
+    const Rect* prevCollisionObstacle;
+    Rect* squareRect; ///< Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
+    Rect* destRect; ///< Pointeur vers le rectangle représentant la destination du carré.
 };
 
 #endif //HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
