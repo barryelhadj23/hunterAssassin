@@ -34,6 +34,12 @@ int main(int argc, char* argv[]) {
     vecAllObstacles.push_back({WINDOW_W/4, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 25});
     vecAllObstacles.push_back({WINDOW_W/2 + 20, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 25});
     vecAllObstacles.push_back({WINDOW_W/2 - 80, WINDOW_H - 70, WINDOW_W/2 - 25, SQUARE_SIZE});
+
+    //mmm
+
+    vecAllObstacles.push_back({WINDOW_W/2 - 80, 80 , WINDOW_W/2, SQUARE_SIZE*2});
+    vecAllObstacles.push_back({WINDOW_W/2, WINDOW_H/2 - 20, 30, WINDOW_W/2 - 45});
+    vecAllObstacles.push_back({WINDOW_W/2 + 40, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 35});
     Rect destRect = squareRect;
 
     AI ai(&squareRect, &destRect);

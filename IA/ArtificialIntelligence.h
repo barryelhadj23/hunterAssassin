@@ -57,7 +57,8 @@ public:
      * @param obstacle Rectangle représentant l'obstacle à contourner..
      */
     void moveAgain(int distanceX, int distanceY, Rect obstacle);
-    bool freePixel(std::vector<Rect>& obstacles)
+    bool freePixel(std::vector<Rect>& obstacles);
+    bool destNotAvailable(const Rect &  rect1, const Rect & rect2);
 private:
     const Rect* prevCollisionObstacle;
     Rect* squareRect; ///< Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
