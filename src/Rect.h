@@ -4,11 +4,8 @@
 
 #ifndef HUNTERASSASSIN_RECT_H
 #define HUNTERASSASSIN_RECT_H
+#include "SDL.h"
+struct Rect: public SDL_Rect{
 
-struct Rect {
-    int x;
-    int y;
-    int w;
-    int h;
 };
 #endif //HUNTERASSASSIN_RECT_H

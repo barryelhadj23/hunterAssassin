@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include "../src/Rect.h"
 #include "../src/config_Variable.h"
 #include "../src/Point.h"
 #include "ArtificialIntelligence.h"
@@ -24,10 +25,22 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    SDL_Rect squareRect = {0, (WINDOW_H - SQUARE_SIZE) / 2, SQUARE_SIZE, SQUARE_SIZE};
-    SDL_Rect obstacle1 = {25, 50 , WINDOW_W/2 - 25, SQUARE_SIZE};
-    SDL_Rect obstacle2 = {WINDOW_W/4, WINDOW_H/2 -20 , 25, WINDOW_W/2 - 25};
-    SDL_Rect destRect = squareRect;
+    Rect squareRect = {0, (WINDOW_H - SQUARE_SIZE) / 2, SQUARE_SIZE, SQUARE_SIZE};
+    // Déclaration du vecteur d'obstacles
+    std::vector<Rect> vecAllObstacles;
+
+// Remplissage du vecteur avec les obstacles du tableau
+    vecAllObstacles.push_back({WINDOW_W/2 - 80, 50 , WINDOW_W/2 - 25, SQUARE_SIZE});
+    vecAllObstacles.push_back({WINDOW_W/4, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 25});
+    vecAllObstacles.push_back({WINDOW_W/2 + 20, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 25});
+    vecAllObstacles.push_back({WINDOW_W/2 - 80, WINDOW_H - 70, WINDOW_W/2 - 25, SQUARE_SIZE});
+
+    //mmm
+
+    vecAllObstacles.push_back({WINDOW_W/2 - 80, 80 , WINDOW_W/2, SQUARE_SIZE*2});
+    vecAllObstacles.push_back({WINDOW_W/2, WINDOW_H/2 - 20, 30, WINDOW_W/2 - 45});
+    vecAllObstacles.push_back({WINDOW_W/2 + 40, WINDOW_H/2 - 20, 25, WINDOW_W/2 - 35});
+    Rect destRect = squareRect;
 
     AI ai(&squareRect, &destRect);
 
@@ -46,21 +59,17 @@ int main(int argc, char* argv[]) {
         }
 
         if (!ai.estArrivee()) {
-            ai.mov(obstacle1);
+            ai.mov(vecAllObstacles);
         }
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
-
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderFillRect(renderer, &squareRect);
-
-        SDL_SetRenderDrawColor(renderer, 217, 189, 100, 255);
-        SDL_RenderFillRect(renderer, &obstacle1);
-
-        SDL_SetRenderDrawColor(renderer, 0, 189, 100, 255);
-        SDL_RenderFillRect(renderer, &obstacle2);
-
+        for(const Rect& obstacle : vecAllObstacles) {
+            SDL_SetRenderDrawColor(renderer, 217, 189, 100, 255);
+            SDL_RenderFillRect(renderer, &obstacle);
+        }
         SDL_RenderPresent(renderer);
 
         SDL_Delay(10);
