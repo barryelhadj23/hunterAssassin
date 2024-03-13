@@ -1,17 +1,12 @@
 #ifndef HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
 #define HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
 
-#include "../src/Rect.h"
+#include "Rect.h"
 #include "vector"
 #include <iostream>
 #include <cmath>
-#include "../src/config_Variable.h"
-
-/**
- * @brief Taille du carré contrôlé par l'IA.
- */
-const int SQUARE_SIZE = 20;
-
+#include "config.h"
+const int SQUARE_SIZE =  20;
 /**
  * @class AI
  * @brief Classe définissant l'intelligence artificielle pour le jeu.
@@ -57,10 +52,23 @@ public:
      * @param obstacle Rectangle représentant l'obstacle à contourner..
      */
     void moveAgain(int distanceX, int distanceY, Rect obstacle);
+
+    /**
+     * @brief Vérifie si le pixel est libre.
+     * @param obstacles Tableau de tous les Rectangle représentant un obstacle à éviter.
+     * @return True si le pixel est libre, sinon False.
+     */
     bool freePixel(std::vector<Rect>& obstacles);
+
+    /**
+     * @brief Vérifie si la destination est disponible.
+     * @param rect1 Rectangle représentant la position actuelle.
+     * @param rect2 Rectangle représentant la destination.
+     * @return True si la destination est disponible, sinon False.
+     */
     bool destNotAvailable(const Rect &  rect1, const Rect & rect2);
+
 private:
-    const Rect* prevCollisionObstacle;
     Rect* squareRect; ///< Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
     Rect* destRect; ///< Pointeur vers le rectangle représentant la destination du carré.
 };
