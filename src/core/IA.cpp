@@ -1,5 +1,5 @@
+#include "IA.h"
 
-#include "ArtificialIntelligence.h"
 
 AI::AI(Rect* squareRect, Rect* destRect) : squareRect(squareRect), destRect(destRect) {}
 
@@ -24,7 +24,7 @@ bool AI::collision(const Rect& rect2) {
         return true;
 
     //if (rect1Left <0 || rect1Right >= WINDOW_W-20 || rect1Top <= 20 || rect1Bottom >= WINDOW_H-20)
-        //return true; // Il y a collision avec la fenêtre
+    //return true; // Il y a collision avec la fenêtre
 
     return false;
 }
@@ -87,10 +87,10 @@ void AI::contourObstacle(Rect obstacleRect) {
             squareRect->x++;
         }
     else
-        if(upDistance < downDistance)
-            squareRect->y--;
-        else
-            squareRect->y++;
+    if(upDistance < downDistance)
+        squareRect->y--;
+    else
+        squareRect->y++;
 }
 
 bool AI::destNotAvailable(const Rect &  rect1, const Rect & rect2) {
@@ -134,9 +134,9 @@ void AI::mov(std::vector<Rect>& obstacles) {
             for (Rect& obstacle : obstacles) {
                 // Si collision avec un obstacle
                 if (collision(obstacle)) {
-                    if (obstacle.x + obstacle.w >= squareRect->x) // Obstacle à droite
+                    if (obstacle.w > obstacle.h) // Obstacle à droite
                         contourObstacle(obstacle); // Contourne l'obstacle
-                    else if (obstacle.y + obstacle.h >= squareRect->y) // Obstacle en bas
+                    else if (obstacle.w < obstacle.h) // Obstacle en bas
                         contourObstacle(obstacle); // Contourne l'obstacle
                     else
                         moveAgain(distanceX, distanceY, obstacle); // se Déplacer à nouveau
@@ -158,11 +158,3 @@ void AI::mov(std::vector<Rect>& obstacles) {
         }
     }
 }
-
-
-
-
-
-
-
-
