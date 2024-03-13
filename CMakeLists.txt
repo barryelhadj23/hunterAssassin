@@ -11,35 +11,25 @@ set(SDL2_PATH "D:/SDL2-2.30.0/x86_64-w64-mingw32")
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 
-add_executable(hunterassassin src/mainProject.cpp
-        src/config_Variable.h
-        src/Rect.h
-        src/Game.cpp
-        src/Game.h
-        src/Point.h
-        src/Player.cpp
-        src/Player.h
-        src/Player.cpp
-)
-
-add_executable(NoyauTest src/main.cpp
-        src/Player.cpp
-        src/Player.h
+add_executable(hunterassassin src/sdl2/mainProject.cpp
+        src/sdl2/SDLGame.cpp
+        src/sdl2/SDLGame.h
+        src/sdl2/SDLSprite.cpp
+        src/sdl2/SDLSprite.h
+        src/core/Game.cpp
+        src/core/Game.h
+        src/core/config.h
+        src/core/Player.cpp
+        src/core/Player.h
+        src/core/Rect.h
+        src/core/IA.cpp
+        src/core/IA.h
 )
 
 add_executable(Animation src/mainAnimation.cpp
         map/map.h
         map/map.cpp
         map/color.h
-)
-
-add_executable(AI_Main IA/mainIA.cpp
-        IA/ArtificialIntelligence.cpp
-        IA/ArtificialIntelligence.h
-)
-
-set_target_properties(NoyauTest PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${NOYAUTEST_OUTPUT_PATH}
 )
 
 set_target_properties(hunterassassin PROPERTIES
@@ -50,10 +40,5 @@ set_target_properties(Animation PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
 )
 
-set_target_properties(AI_Main PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
-)
-
 target_link_libraries(hunterassassin ${SDL2_LIBRARY})
 target_link_libraries(Animation ${SDL2_LIBRARY})
-target_link_libraries(AI_Main ${SDL2_LIBRARY})
