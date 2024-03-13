@@ -1,4 +1,4 @@
-#include "sdl2/SDLGame.h"
+#include "SDLGame.h"
 
 int main(int argc, char* args[]) {
     SDLGame gameSdl;
