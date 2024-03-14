@@ -4,6 +4,7 @@
 #include "point.h"
 #include "config.h"
 #include <cassert>
+#include "Map.h"
 #include <iostream>
 
 /**
@@ -16,6 +17,30 @@ private:
     int health; ///< Nombre de vies du joueur.
 
 public:
+    /**
+     * @brief Déplace le joueur vers la gauche sur la carte spécifiée.
+     * @param map La carte sur laquelle le joueur se déplace.
+     */
+    void goLeft(const Map &map);
+
+    /**
+     * @brief Déplace le joueur vers la droite sur la carte spécifiée.
+     * @param map La carte sur laquelle le joueur se déplace.
+     */
+    void goRight(const Map &map);
+
+    /**
+     * @brief Déplace le joueur vers le haut sur la carte spécifiée.
+     * @param map La carte sur laquelle le joueur se déplace.
+     */
+    void goUp(const Map &map);
+
+    /**
+     * @brief Déplace le joueur vers le bas sur la carte spécifiée.
+     * @param map La carte sur laquelle le joueur se déplace.
+     */
+    void goDown(const Map &map);
+
     /**
      * @brief Obtient la position actuelle du joueur.
      * @return La position actuelle du joueur.

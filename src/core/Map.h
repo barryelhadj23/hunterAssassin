@@ -55,6 +55,14 @@ public:
     caseValue getObject(const int _x, const int _y) const;
 
     /**
+     * @brief Renvoie le caractère représentant le type d'objet se trouvant aux coordonnées spécifiées.
+     * @param _x Abscisse de la case.
+     * @param _y Ordonnée de la case.
+     * @return Caractère représentant le type d'objet (#, _ ou |).
+     */
+    unsigned char getObjectChar(const int _x, const int _y) const;
+
+    /**
      * @brief Renvoie la largeur de la carte.
      * @return La largeur de la carte.
      */
@@ -92,6 +100,20 @@ inline Map::caseValue Map::getObject(const int _x, const int _y) const {
     assert(_x < _dimX);
     assert(_y < _dimY);
     return myMap[_x][_y];
+}
+
+/**
+ * @brief Renvoie le caractère représentant le type d'objet se trouvant aux coordonnées spécifiées.
+ * @param _x Abscisse de la case.
+ * @param _y Ordonnée de la case.
+ * @return Caractère représentant le type d'objet (#, _ ou |).
+ */
+unsigned char Map::getObjectChar(const int _x, const int _y) const {
+    assert(_x >= 0);
+    assert(_y >= 0);
+    assert(_x < _dimX);
+    assert(_y < _dimY);
+    return (char) myMap[_x][_y];
 }
 
 #endif //HUNTERASSASSIN_MAP_H

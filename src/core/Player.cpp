@@ -10,6 +10,26 @@ Player::~Player(){
     health=0;
 }
 
+void Player::goLeft(const Map &map) {
+    if(map.freePixel(pos.x,pos.y))
+        setPositionX(pos.x-1);
+}
+
+void Player::goRight(const Map &map) {
+    if(map.freePixel(pos.x,pos.y))
+        setPositionX(pos.x+1);
+}
+
+void Player::goUp(const Map &map) {
+    if(map.freePixel(pos.x,pos.y))
+        setPositionX(pos.y-1);
+}
+
+void Player::goDown(const Map &map) {
+    if(map.freePixel(pos.x,pos.y))
+        setPositionX(pos.y+1);
+}
+
 void Player::testRegression() {
     Player player;
     assert(WINDOW_W/2 == player.getPosition().x && WINDOW_H-PLAYER_HEIGHT == player.getPosition().y);
