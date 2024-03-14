@@ -8,6 +8,8 @@ Game::Game(): _player() {
 
 }
 
+Game::~Game() {}
+
 bool Game::toucheClavier(const char touche)
 {
     switch (touche)
@@ -33,6 +35,3 @@ bool Game::toucheClavier(const char touche)
     }
     return false;
 }
-
-
-Game::~Game() {}
