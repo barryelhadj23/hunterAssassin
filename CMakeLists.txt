@@ -24,6 +24,8 @@ add_executable(hunterassassin src/sdl2/mainProject.cpp
         src/core/Rect.h
         src/core/IA.cpp
         src/core/IA.h
+        src/core/Map.cpp
+        src/core/Map.h
 )
 
 add_executable(Animation src/mainAnimation.cpp
@@ -32,11 +34,21 @@ add_executable(Animation src/mainAnimation.cpp
         map/color.h
 )
 
+add_executable(JeuTxt src/txt/main_txt.cpp
+        src/txt/txtJeu.cpp
+        src/txt/winTxt.cpp
+        src/txt/txtJeu.h
+        src/txt/winTxt.h)
+
 set_target_properties(hunterassassin PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
 )
 
 set_target_properties(Animation PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
+)
+
+set_target_properties(JeuTxt PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
 )
 
