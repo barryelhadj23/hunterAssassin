@@ -1,18 +1,18 @@
 #include <iostream>
-#ifdef _WIN32
+
 #include <windows.h>
-#else
 #include <unistd.h>
-#endif // WIN32
+
 #include "winTxt.h"
 
 #include "../core/Game.h"
+#include "../core/Garde.h"
 
-void txtAff(WinTXT &win, Game &g)
+void Display(WinTXT &win, Game &g)
 {
 	const Map &map = g.getConstMap();
 	const Player & player = g.getConstPlayer();
-	//const Gardes &gardes = jeu.getConstAllGarde();
+	const Garde *gardes = g.getAllGardes();
 
 	win.clear();
 
@@ -33,20 +33,16 @@ void txtRun(Game &g)
 	WinTXT win(g.getConstMap().getDimX(), g.getConstMap().getDimY());
 
 	bool run = true;
-	int keyBoard;
+	int chKey;
 
 	do
 	{
-		txtAff(win, g);
+        Display(win, g);
+		Sleep(3);
 
-        #ifdef _WIN32
-		Sleep(100);
-        #else
-		usleep(100000);
-        #endif // WIN32
 
-        keyBoard = win.getCh();
-		switch (keyBoard)
+        chKey = win.getCh();
+		switch (chKey)
 		{
 		case 'z': //UP
 			g.toucheClavier('z');

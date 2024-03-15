@@ -35,6 +35,6 @@
 
 /// \def PLAYER_HEIGHT
 /// Hauteur du joueur.
-#define PLAYER_HEIGHT 36
+#define PLAYER_HEIGHT 24
 
 #endif // HUNTERASSASSIN_CONFIG_H

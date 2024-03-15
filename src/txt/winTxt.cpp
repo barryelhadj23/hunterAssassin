@@ -8,8 +8,8 @@
 #if _WIN32
 #include <windef.h>
 #include <winbase.h>
-#include <wincon.h>
 #include <windows.h>
+#include <wincon.h>
 #include <conio.h>
 #else
 #include <unistd.h>

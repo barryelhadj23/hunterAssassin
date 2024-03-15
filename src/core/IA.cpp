@@ -3,6 +3,8 @@
 
 AI::AI(Rect* squareRect, Rect* destRect) : squareRect(squareRect), destRect(destRect) {}
 
+AI::AI() {}
+
 bool AI::estArrivee() {
     return (squareRect->x == destRect->x && squareRect->y == destRect->y);
 }

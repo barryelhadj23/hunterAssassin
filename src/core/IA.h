@@ -19,6 +19,7 @@ public:
      * @param destRect Pointeur vers le rectangle représentant la destination du carré.
      */
     AI(Rect* squareRect, Rect* destRect);
+    AI();
 
     /**
      * @brief Vérifie si le carré est arrivé à sa destination.

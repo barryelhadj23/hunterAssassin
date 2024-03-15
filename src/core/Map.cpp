@@ -23,7 +23,7 @@ Map::Map() {
     _dimY = 15; //nb ligne
     for(int i=0; i<_dimX; ++i)
         for(int j=0;j<_dimY;++j) {
-            switch (mapAssassin[_dimY-1-j][i]) {
+            switch (mapAssassin[j][i]) {
                 case '#':
                     myMap[i][j] = WALL;
                     break;

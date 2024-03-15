@@ -1,10 +1,9 @@
 #include "winTxt.h"
-#include "txtJeu.h"
-
+#include "gameTxt.h"
 int main(int argc, char **argv)
 {
 	termClear();
-	Game game;
+	Game game(5);
     txtRun(game);
 	termClear();
 	return 0;
